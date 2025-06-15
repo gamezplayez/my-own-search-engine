@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>New Tab</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 0, 0, 0.3),
+      rgba(255, 165, 0, 0.3),
+      rgba(255, 255, 0, 0.3),
+      rgba(0, 255, 0, 0.3),
+      rgba(0, 0, 255, 0.3),
+      rgba(75, 0, 130, 0.3),
+      rgba(238, 130, 238, 0.3)
+    );
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    user-select: none;
+  }
+
+  input[type="text"] {
+    width: 320px;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    font-size: 18px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+
+  input[type="text"]:focus {
+    border: 2px solid #ff6f61;
+  }
+
+  button {
+    margin-top: 25px;
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    background-color: #888888;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0 20px;
+  }
+
+  button:hover {
+    background-color: #777777;
+  }
+
+  button:active {
+    transform: scale(0.97);
+    transition-duration: 0.2s;
+  }
+</style>
+</head>
+<body>
+  <div class="header">Search the web with harpy!😊</div>
+
+  <input id="searchInput" type="text" placeholder="Search the web..." />
+
+  <button id="searchBtn">Search the web🔍</button>
+
+<script>
+  document.getElementById('searchBtn').addEventListener('click', function () {
+    const input = document.getElementById('searchInput').value.trim();
+    if (input.length === 0) return;
+
+    const query = input.replace(/\s+/g, '+');
+    const url = `https://www.google.com/search?q=${query}`;
+
+    window.open(url, '_blank');
+  });
+
+  document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      document.getElementById('searchBtn').click();
+    }
+  });
+</script>
+</body>
+</html>
